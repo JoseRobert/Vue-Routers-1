@@ -21,6 +21,7 @@ export default new Vuex.Store({
     },
     cargaVegetables: function(state, data){
       console.log('mutations.cargaVegetables()');
+      console.log(data);
       state.vegetables = data;
     }
   },

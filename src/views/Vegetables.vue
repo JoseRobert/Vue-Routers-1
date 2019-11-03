@@ -11,7 +11,7 @@
               </tr>
           </thead>
           <tbody>
-              <tr v-for="(vegetable, index) of vegetables" :key='vegetable.id'>
+              <tr v-for="vegetable of vegetables" :key='vegetable.id'>
                   <td>{{ vegetable.nombre }}</td>
                   <td>{{ vegetable.cantidad }}</td>
               </tr>
@@ -34,11 +34,12 @@ export default {
   computed: {
     ...mapState(['vegetables']),
     enviaVegetables(){
-      
+
     }
   },
   methods: {
     ...mapMutations(['cargaVegetables']),
+    ...mapActions(['aVegetables']),
 
     metodo1: function({commit}, datos){
       console.log('metodo1()');
@@ -57,13 +58,13 @@ export default {
       {nombre:'Zanahoria', cantidad: 0},
       {nombre:'Esparragos', cantidad: 0}
     ];
-    this.metodo1(vegetales)
-    // $store.dispatch('aVegetables', vegetales); 
+    // this.metodo1(vegetales)
+    this.$store.dispatch('aVegetables', vegetales);     // Metodo
     //dispatch('aVegetables', vegetales); 
     // commit('cargaVegetables', vegetales);
 
   },
-  mounted: function(){
+  mounted:function(){
     console.log('component-Vegetables.mounted');
 
   }
